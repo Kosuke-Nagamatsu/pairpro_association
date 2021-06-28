@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<br>
+<h2>詳細ページ</h2>
+<p>タイトル：<%= @blog.title %></p>
+<p>内容：<%= @blog.content %></p>
+<% unless @blog.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+<br>
+<br>
+<br>
+<% i=1 %>
+<% @favorites.each do |f| %>
+  <h3>お気に入り<%= "#{i}" %></h3>
+  <ul>
+    <li>タイトル：<%= f.blog.title %></li>
+    <li>内容：<%= f.blog.content %></li>
+  </ul>
+  <% i+=1 %>
+<% end %>
+<p>お気に入りの合計数は<strong><%= @favorites.count %></strong>です！</p>
+<%= link_to 'Edit', edit_blog_path(@blog) %>
+<%= link_to 'Back', blogs_path %>
