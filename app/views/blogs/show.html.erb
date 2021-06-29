@@ -10,16 +10,5 @@
     <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<br>
-<br>
-<br>
-<% @favorites.each.with_index(1) do |f, number| %>
-  <h3>お気に入り<%= number %></h3>
-  <ul>
-    <li>タイトル：<%= f.blog.title %></li>
-    <li>内容：<%= f.blog.content %></li>
-  </ul>
-<% end %>
-<p>お気に入りの合計数は<strong><%= @favorites.count %></strong>です！</p>
 <%= link_to 'Edit', edit_blog_path(@blog) %>
 <%= link_to 'Back', blogs_path %>

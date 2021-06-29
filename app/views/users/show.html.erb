@@ -1,3 +1,11 @@
 <h1>プロフィール(users/show)</h1>
 <p>名前: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
+<br>
+<% @blogs.each.with_index(1) do |b, number| %>
+  <h3>お気に入り<%= number %></h3>
+  <ul>
+    <li>タイトル：<%= b.blog.title %></li>
+    <li>内容：<%= b.blog.content %></li>
+  </ul>
+<% end %>
