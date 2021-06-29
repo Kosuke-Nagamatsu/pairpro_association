@@ -13,14 +13,12 @@
 <br>
 <br>
 <br>
-<% i=1 %>
-<% @favorites.each do |f| %>
-  <h3>お気に入り<%= "#{i}" %></h3>
+<% @favorites.each.with_index(1) do |f, favorite_number| %>
+  <h3>お気に入り<%= favorite_number %></h3>
   <ul>
     <li>タイトル：<%= f.blog.title %></li>
     <li>内容：<%= f.blog.content %></li>
   </ul>
-  <% i+=1 %>
 <% end %>
 <p>お気に入りの合計数は<strong><%= @favorites.count %></strong>です！</p>
 <%= link_to 'Edit', edit_blog_path(@blog) %>
