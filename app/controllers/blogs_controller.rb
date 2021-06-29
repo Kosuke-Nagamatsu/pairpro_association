@@ -8,7 +8,6 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1 or /blogs/1.json
   def show
-    @favorites = current_user.favorites
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 

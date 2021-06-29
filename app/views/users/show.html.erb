@@ -9,3 +9,9 @@
     <li>内容：<%= b.blog.content %></li>
   </ul>
 <% end %>
+<% count = 0 %>
+<% @login_user_blogs.each do |blog| %>
+  <% count += blog.favorites.count if blog.favorites.present? %>
+<% end %>
+<br>
+<p>お気に入りされた合計数は<strong><%= count %></strong>件です！</p>
